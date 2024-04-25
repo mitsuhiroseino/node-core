@@ -31,6 +31,7 @@
     "@babel/runtime": "^7.17.9",
     "@visue/core": "../../local/@visue/core",
     "fs-extra": "^10.0.1",
+    "iconv-lite": "^0.6.3",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
