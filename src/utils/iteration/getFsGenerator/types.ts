@@ -1,5 +1,4 @@
-import { Stats } from 'fs-extra';
-
+import fs from 'fs-extra';
 import { ITEM_TYPE } from './constants';
 
 /**
@@ -46,14 +45,16 @@ export type GetFsGeneratorOptions<R = string> = {
   arrangeValue?: (path: string, pathInfo: PathInfo) => R;
 
   /**
-   * シンボリックリンクの参照先のパスも取得
+   * シンボリックリンクの参照先のパスは取得しない
    */
-  followSymbolicLink?: boolean;
+  ignoreSymlinks?: boolean;
 
   /**
    * 末端の要素から取得
    */
   reverse?: boolean;
+
+  sorter?: (item0: fs.Dirent, item1: fs.Dirent) => number;
 };
 
 export type PathInfo = {

@@ -9,7 +9,7 @@ export default function getAllPaths<R = string>(directoryPath: string, options: 
     target,
     minDepth = 0,
     maxDepth = Infinity,
-    followSymbolicLink,
+    ignoreSymlinks,
     arrangeValue = (...args) => args[0],
     reverse,
   } = options;
@@ -20,9 +20,9 @@ export default function getAllPaths<R = string>(directoryPath: string, options: 
 
   const paths: R[] = [];
   // シンボリックリンクの有効／無効
-  const statSync = followSymbolicLink
-    ? (currentPath) => fs.statSync(currentPath)
-    : (currentPath) => fs.lstatSync(currentPath);
+  const statSync = ignoreSymlinks
+    ? (currentPath) => fs.lstatSync(currentPath)
+    : (currentPath) => fs.statSync(currentPath);
 
   //
   function traverseDirectorySync(currentPath: string, depth: number): void {

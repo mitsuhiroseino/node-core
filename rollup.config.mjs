@@ -12,10 +12,8 @@ const INPUT = './src/index.ts',
   // node_modules配下のdependenciesはバンドルしない。下記の正規表現の指定をするためには'@rollup/plugin-node-resolve'が必要
   EXTERNAL = [/node_modules/, /@visue/],
   OUTPUT = './build',
-  OUTPUT_CJS = OUTPUT,
-  OUTPUT_ESM = OUTPUT,
   BABEL_CONFIG_PATH = path.resolve('babel.config.js'),
-  TEST_FILE = /.+\.test\..+/;
+  TEST_DIR = /.+__test__.+/;
 
 // commonjs用とesmodule用のソースを出力する
 const config = [
@@ -25,7 +23,7 @@ const config = [
     input: INPUT,
     output: {
       // 出力先ディレクトリ
-      dir: OUTPUT_CJS,
+      dir: OUTPUT,
       format: 'cjs',
       exports: 'named',
       sourcemap: true,
@@ -39,9 +37,9 @@ const config = [
       nodeResolve(),
       typescript({
         tsconfig: './tsconfig.json',
-        exclude: [TEST_FILE],
-        declarationDir: OUTPUT_CJS,
-        outDir: OUTPUT_CJS,
+        exclude: [TEST_DIR],
+        declarationDir: OUTPUT,
+        outDir: OUTPUT,
       }),
       // babel({
       //   extensions: EXTENTIONS,
@@ -49,17 +47,17 @@ const config = [
       //   configFile: BABEL_CONFIG_PATH,
       // }),
       commonjs(),
-      packagejson({
-        baseContents: (pkgjson) => ({
-          name: pkgjson.name,
-          version: pkgjson.version,
-          author: pkgjson.author,
-          license: pkgjson.license,
-          main: `index.${EXTENTION_CJS}`,
-          module: `esm/index.${EXTENTION_ESM}`,
-          types: 'index.d.ts',
-        }),
-      }),
+      // packagejson({
+      //   baseContents: (pkgjson) => ({
+      //     name: pkgjson.name,
+      //     version: pkgjson.version,
+      //     author: pkgjson.author,
+      //     license: pkgjson.license,
+      //     main: `index.${EXTENTION_CJS}`,
+      //     module: `esm/index.${EXTENTION_ESM}`,
+      //     types: 'index.d.ts',
+      //   }),
+      // }),
     ],
   },
   // esmのビルド
@@ -68,7 +66,7 @@ const config = [
     input: INPUT,
     output: {
       // 出力先ディレクトリ
-      dir: OUTPUT_ESM,
+      dir: OUTPUT,
       format: 'es',
       exports: 'named',
       sourcemap: true,
@@ -84,8 +82,8 @@ const config = [
         tsconfig: './tsconfig.json',
         declaration: false,
         declarationMap: false,
-        exclude: [TEST_FILE],
-        outDir: OUTPUT_ESM,
+        exclude: [TEST_DIR],
+        outDir: OUTPUT,
       }),
       // babel({
       //   extensions: EXTENTIONS,

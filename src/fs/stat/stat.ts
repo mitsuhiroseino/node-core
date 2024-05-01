@@ -4,14 +4,20 @@ import { FsStatOptions } from './types';
 /**
  * ファイル・ディレクトリなどの情報を返す。
  * ファイル・ディレクトリなどが存在しない場合はnullを返す
- * ignoreSymlinks=trueでシンボリックリンクを判定した場合の結果は下記の通り
+ * シンボリックリンクを判定した時の結果は下記の通り
  *
- * - isDirectory(): false
- * - isFile(): false
- * - isSymbolicLink: true
+ * - ignoreSymlinks: false or undefined
+ *     - isDirectory(): true
+ *     - isFile(): false
+ *     - isSymbolicLink: false
+ *
+ * - ignoreSymlinks: true
+ *     - isDirectory(): false
+ *     - isFile(): false
+ *     - isSymbolicLink: true
  *
  * @param filePath
- * @param ignoreSymlinks
+ * @param options
  * @returns
  */
 export default async function fsStat(

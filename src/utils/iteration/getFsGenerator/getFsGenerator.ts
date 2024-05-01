@@ -1,7 +1,7 @@
 import fs from 'fs/promises';
 import identity from 'lodash/identity';
 import path from 'path';
-
+import stat from '../../../fs/stat';
 import { ITEM_TYPE } from './constants';
 import { GetFsGeneratorOptions } from './types';
 
@@ -13,12 +13,15 @@ import { GetFsGeneratorOptions } from './types';
 export default function getFsGenerator<R = string>(
   options: GetFsGeneratorOptions<R> = {},
 ): (rootPath: string) => AsyncGenerator<R> {
-  const { minDepth = 1, maxDepth = Infinity, target, followSymbolicLink, arrangeValue = identity, reverse } = options;
-  const isDirectory = followSymbolicLink
-    ? // シンボリックリンクの先を処理する場合
-      (isDirectory: boolean, isSymbolicLink: boolean) => isDirectory || isSymbolicLink
-    : // シンボリックリンクの先を処理しない場合
-      (isDirectory: boolean) => isDirectory;
+  const {
+    minDepth = 1,
+    maxDepth = Infinity,
+    target,
+    ignoreSymlinks,
+    arrangeValue = identity,
+    reverse,
+    sorter,
+  } = options;
   const includeFiles = !target || target === ITEM_TYPE.FILE;
   const includeDirs = !target || target === ITEM_TYPE.DIR;
 
@@ -27,7 +30,9 @@ export default function getFsGenerator<R = string>(
     const active = minDepth <= depth;
     const moreDeeply = depth < maxDepth;
     const items = await fs.readdir(dirPath, { withFileTypes: true });
-
+    if (sorter) {
+      items.sort(sorter);
+    }
     for (const item of items) {
       const itemPath = path.join(item.path, item.name);
       if (item.isFile()) {
@@ -35,7 +40,7 @@ export default function getFsGenerator<R = string>(
           // ファイルのパスを返す
           yield arrangeValue(itemPath, { name: item.name, itemType: 'file', depth, parentPath: item.path });
         }
-      } else if (isDirectory(item.isDirectory(), item.isSymbolicLink())) {
+      } else if (item.isDirectory()) {
         if (moreDeeply && reverse) {
           // さらに下を取得 & 末端から取得する場合
           yield* iterateFs(itemPath, depth + 1);
@@ -54,11 +59,9 @@ export default function getFsGenerator<R = string>(
 
   // ルートパスを処理してメインのジェネレーターを実行するジェネレーター
   return async function* (rootPath: string): AsyncGenerator<R> {
-    // lstatはシンボリックリンクをisDirectory=false,isFile=false,isSymbolicLink=trueで返す
-    // (参考) statはシンボリックリンクをisDirectory=true,isFile=false,isSymbolicLink=falseで返す
-    const stat = await fs.lstat(rootPath);
+    const stats = await stat(rootPath, { ignoreSymlinks });
     // ディレクトリ(ドライブも含む)を処理対象とする
-    if (isDirectory(stat.isDirectory(), stat.isSymbolicLink()) && 1 <= maxDepth) {
+    if (stats && stats.isDirectory() && 1 <= maxDepth) {
       yield* iterateFs(path.normalize(rootPath));
     }
   };
