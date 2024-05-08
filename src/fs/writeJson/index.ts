@@ -1,2 +1,2 @@
-export { default } from './writeJson';
 export type * from './types';
+export { default } from './writeJson';

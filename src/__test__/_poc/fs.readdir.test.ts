@@ -1,5 +1,4 @@
 import fs from 'fs/promises';
-import path from 'path';
 
 const DEPTH_0_D = 'src\\__test__\\_resources_\\util\\iteration\\getFsGenerator.test\\dir1a';
 

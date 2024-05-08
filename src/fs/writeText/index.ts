@@ -1,2 +1,2 @@
-export { default } from './writeText';
 export type * from './types';
+export { default } from './writeText';

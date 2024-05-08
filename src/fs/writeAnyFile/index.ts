@@ -1,2 +1,2 @@
-export { default } from './writeAnyFile';
 export type * from './types';
+export { default } from './writeAnyFile';
