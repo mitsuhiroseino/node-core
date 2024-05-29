@@ -54,7 +54,7 @@ export type GetFsGeneratorOptions<R = string> = {
    */
   reverse?: boolean;
 
-  sorter?: (item0: fs.Dirent, item1: fs.Dirent) => number;
+  sorter?: (item1: fs.Dirent, item2: fs.Dirent) => number;
 };
 
 export type PathInfo = {
