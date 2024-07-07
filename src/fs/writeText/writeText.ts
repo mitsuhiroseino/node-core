@@ -1,5 +1,5 @@
-import toBuffer from '@visue/core/utils/lang/toBuffer';
 import fs from 'fs-extra';
+import toBuffer from '../../utils/lang/toBuffer';
 import { WriteTextOptions } from './types';
 
 /**

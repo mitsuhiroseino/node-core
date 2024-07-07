@@ -1,5 +1,5 @@
-import toString from '@visue/core/utils/lang/toString';
 import fs from 'fs-extra';
+import toString from '../../utils/lang/toString';
 import { ReadJsonOptions } from './types';
 
 /**

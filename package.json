@@ -1,6 +1,6 @@
 {
   "name": "@visue/node-core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Mitsuhiro Seino",
   "license": "MIT",
   "main": "build/index.js",
@@ -24,7 +24,6 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.17.9",
-    "@visue/core": "^0.1.0",
     "fs-extra": "^10.0.1",
     "iconv-lite": "^0.6.3",
     "lodash": "^4.17.21"

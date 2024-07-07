@@ -1374,7 +1374,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.17.9, @babel/runtime@npm:^7.21.0, @babel/runtime@npm:^7.8.4":
+"@babel/runtime@npm:^7.17.9, @babel/runtime@npm:^7.8.4":
   version: 7.24.0
   resolution: "@babel/runtime@npm:7.24.0"
   dependencies:
@@ -2326,20 +2326,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@visue/core@npm:^0.1.0":
-  version: 0.1.0
-  resolution: "@visue/core@npm:0.1.0"
-  dependencies:
-    bignumber.js: "npm:^9.1.1"
-    date-fns: "npm:^2.29.3"
-    geolib: "npm:^3.3.4"
-    iconv-lite: "npm:^0.6.3"
-    lodash: "npm:^4.17.21"
-    nanoid: "npm:^4.0.1"
-  checksum: 10c0/da8890fb6888e4bf3eb68e4ea768fc7d35937e92b84426031d1e2b63620545ebd0a7628ee617e6e9fbfa034d69edfad37039b22e8aff3e40033b1fe5f899d6c7
-  languageName: node
-  linkType: hard
-
 "@visue/dev@npm:^0.1.0":
   version: 0.1.0
   resolution: "@visue/dev@npm:0.1.0"
@@ -2369,7 +2355,6 @@ __metadata:
     "@types/jest": "npm:^29.5.0"
     "@types/lodash": "npm:^4.14.195"
     "@types/lodash-es": "npm:^4.17.6"
-    "@visue/core": "npm:^0.1.0"
     "@visue/dev": "npm:^0.1.0"
     babel-jest: "npm:^29.5.0"
     eslint: "npm:^9.3.0"
@@ -2652,13 +2637,6 @@ __metadata:
   version: 1.0.2
   resolution: "balanced-match@npm:1.0.2"
   checksum: 10c0/9308baf0a7e4838a82bbfd11e01b1cb0f0cf2893bc1676c27c2a8c0e70cbae1c59120c3268517a8ae7fb6376b4639ef81ca22582611dbee4ed28df945134aaee
-  languageName: node
-  linkType: hard
-
-"bignumber.js@npm:^9.1.1":
-  version: 9.1.2
-  resolution: "bignumber.js@npm:9.1.2"
-  checksum: 10c0/e17786545433f3110b868725c449fa9625366a6e675cd70eb39b60938d6adbd0158cb4b3ad4f306ce817165d37e63f4aa3098ba4110db1d9a3b9f66abfbaf10d
   languageName: node
   linkType: hard
 
@@ -3112,15 +3090,6 @@ __metadata:
   dependencies:
     css-tree: "npm:^1.1.2"
   checksum: 10c0/f8c6b1300efaa0f8855a7905ae3794a29c6496e7f16a71dec31eb6ca7cfb1f058a4b03fd39b66c4deac6cb06bf6b4ba86da7b67d7320389cb9994d52b924b903
-  languageName: node
-  linkType: hard
-
-"date-fns@npm:^2.29.3":
-  version: 2.30.0
-  resolution: "date-fns@npm:2.30.0"
-  dependencies:
-    "@babel/runtime": "npm:^7.21.0"
-  checksum: 10c0/e4b521fbf22bc8c3db332bbfb7b094fd3e7627de0259a9d17c7551e2d2702608a7307a449206065916538e384f37b181565447ce2637ae09828427aed9cb5581
   languageName: node
   linkType: hard
 
@@ -3739,13 +3708,6 @@ __metadata:
   version: 1.0.0-beta.2
   resolution: "gensync@npm:1.0.0-beta.2"
   checksum: 10c0/782aba6cba65b1bb5af3b095d96249d20edbe8df32dbf4696fd49be2583faf676173bf4809386588828e4dd76a3354fcbeb577bab1c833ccd9fc4577f26103f8
-  languageName: node
-  linkType: hard
-
-"geolib@npm:^3.3.4":
-  version: 3.3.4
-  resolution: "geolib@npm:3.3.4"
-  checksum: 10c0/7e18b28c825ad1bd1e4d4166a991659caaf5c779b73818b8dd00c2d6c60b59b208116c22cb1f93830c03571ac498f09586e77173e223bf56615ddace22d8de51
   languageName: node
   linkType: hard
 
@@ -5185,15 +5147,6 @@ __metadata:
   version: 2.1.2
   resolution: "ms@npm:2.1.2"
   checksum: 10c0/a437714e2f90dbf881b5191d35a6db792efbca5badf112f87b9e1c712aace4b4b9b742dd6537f3edf90fd6f684de897cec230abde57e87883766712ddda297cc
-  languageName: node
-  linkType: hard
-
-"nanoid@npm:^4.0.1":
-  version: 4.0.2
-  resolution: "nanoid@npm:4.0.2"
-  bin:
-    nanoid: bin/nanoid.js
-  checksum: 10c0/3fec62f422bc4727918eda0e7aa43e9cbb2e759be72813a0587b9dac99727d3c7ad972efce7f4f1d4cb5c7c554136a1ec3b1043d1d91d28d818d6acbe98200e5
   languageName: node
   linkType: hard
 
