@@ -5,7 +5,6 @@
     "lib": ["ESNext"],
     "rootDir": "./src",
     "outDir": "./build",
-    "baseUrl": "./",
     "allowJs": true,
     "checkJs": true,
     "declaration": true,
